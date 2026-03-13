@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+	{
+		title: 'Diseño a Medida',
+		description: 'Planificamos cada pieza según tu espacio, estilo y necesidades reales de uso.',
+		label: 'Diseño',
+	},
+	{
+		title: 'Fabricación Artesanal',
+		description: 'Utilizamos maderas sólidas como Conacaste, Cedro y Roble, tratadas para resistir el clima de nuestra región.',
+		label: 'Taller',
+	},
+	{
+		title: 'Instalación y Entrega',
+		description: 'Nos encargamos de la entrega final para que cada mueble quede perfecto en su lugar.',
+		label: 'Entrega',
+	},
+];
+
+const projects = [
+	{ name: 'Biblioteca Empotrada', material: 'Roble / Acabado Natural' },
+	{ name: 'Comedor Familiar', material: 'Cedro / Barniz Mate' },
+	{ name: 'Mueble de TV Flotante', material: 'Nogal / Tono Oscuro' },
+	{ name: 'Closet Modular', material: 'Pino / Laca Satinada' },
+	{ name: 'Escritorio Ejecutivo', material: 'Melina / Acero Negro' },
+	{ name: 'Cabecera Artesanal', material: 'Conacaste / Cera Natural' },
+];
+---
+
+<Layout>
+	<main class="overflow-x-hidden">
+		<section id="inicio" class="relative min-h-screen flex items-center bg-stone-900 pt-28 pb-20">
+			<div class="absolute inset-0">
+				<div class="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-700"></div>
+				<div class="absolute -top-24 -left-20 h-96 w-96 rounded-full bg-amber-600/20 blur-3xl"></div>
+				<div class="absolute -bottom-20 right-0 h-80 w-80 rounded-full bg-white/10 blur-3xl"></div>
+			</div>
+
+			<div class="relative z-10 max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full">
+				<div>
+					<div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-stone-100 mb-6">
+						<span class="h-2 w-2 rounded-full bg-amber-500"></span>
+						Carpintería Premium en El Salvador
+					</div>
+					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+						Transformamos madera
+						<span class="text-amber-400"> en el alma de tu hogar</span>
+					</h1>
+					<p class="text-lg text-stone-200 mt-6 max-w-xl">
+						Muebles de alta gama diseñados con precisión y fabricados a mano en El Salvador. Calidad que se hereda.
+					</p>
+
+					<div class="mt-8 flex flex-wrap gap-4">
+						<a href="#proyectos" class="bg-amber-600 hover:bg-amber-700 text-white px-7 py-3 rounded-lg font-semibold transition">
+							Explorar Proyectos
+						</a>
+						<a href="#contacto" class="border border-white/30 hover:border-white text-white px-7 py-3 rounded-lg font-semibold transition">
+							Solicitar Cotización
+						</a>
+					</div>
+
+					<div class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+						<div>
+							<p class="text-2xl font-bold text-white">+180</p>
+							<p class="text-sm text-stone-300">Proyectos</p>
+						</div>
+						<div>
+							<p class="text-2xl font-bold text-white">12 años</p>
+							<p class="text-sm text-stone-300">Experiencia</p>
+						</div>
+						<div>
+							<p class="text-2xl font-bold text-white">100%</p>
+							<p class="text-sm text-stone-300">A medida</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white/10 border border-white/15 rounded-2xl p-6 backdrop-blur-md shadow-2xl">
+					<div class="aspect-[4/5] rounded-xl bg-stone-200/15 border border-white/10 flex items-center justify-center text-stone-200">
+						Espacio para imagen principal
+					</div>
+					<div class="mt-6 grid grid-cols-2 gap-4 text-sm text-stone-200">
+						<div class="rounded-lg bg-white/10 p-4">
+							<p class="text-stone-300">Proyecto destacado</p>
+							<p class="font-semibold text-white mt-1">Cocina Integral Moderna</p>
+						</div>
+						<div class="rounded-lg bg-white/10 p-4">
+							<p class="text-stone-300">Tiempo promedio</p>
+							<p class="font-semibold text-white mt-1">2 - 4 semanas</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 bg-white border-y border-stone-200">
+			<div class="max-w-6xl mx-auto px-6">
+				<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+					{services.map((service) => (
+						<div class="rounded-2xl border border-stone-200 p-6 bg-stone-50 hover:bg-white hover:shadow-lg transition">
+							<span class="inline-flex rounded-full bg-amber-100 text-amber-800 px-3 py-1 text-xs font-semibold mb-4">
+								{service.label}
+							</span>
+							<h3 class="text-xl font-bold text-stone-800 mb-3">{service.title}</h3>
+							<p class="text-stone-600 leading-relaxed">{service.description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section id="proyectos" class="py-24 max-w-6xl mx-auto px-6">
+			<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
+				<div>
+					<p class="text-amber-700 font-semibold mb-2">Portafolio</p>
+					<h2 class="text-4xl font-bold text-stone-800">Nuestros Trabajos</h2>
+					<p class="text-stone-600 mt-3 max-w-2xl">
+						Aqui se muestra una selección de muebles realizados a medida para clientes en El Salvador, destacando la variedad de estilos y materiales que trabajamos.
+					</p>
+				</div>
+				<a href="#contacto" class="text-stone-800 font-semibold hover:text-amber-700 transition">Cotizar un proyecto →</a>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				{projects.map((project, index) => (
+					<article class="group">
+						<div class="aspect-[4/3] bg-stone-200 rounded-2xl overflow-hidden mb-4 relative border border-stone-300">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent"></div>
+							<div class="absolute inset-0 flex items-center justify-center text-stone-500 italic">
+								Espacio para foto {index + 1}
+							</div>
+							<div class="absolute bottom-3 left-3 text-xs bg-white/90 text-stone-800 px-3 py-1 rounded-full font-medium">
+								Proyecto a Medida
+							</div>
+						</div>
+						<h3 class="text-xl font-bold text-stone-800">{project.name}</h3>
+						<p class="text-stone-500 text-sm mt-1">{project.material}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="py-20 bg-stone-900 text-white">
+			<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+				<div class="md:col-span-1">
+					<p class="text-amber-400 font-semibold mb-2">Proceso de Trabajo</p>
+					<h2 class="text-3xl font-bold">Simple, claro y personalizado</h2>
+				</div>
+				<div class="md:col-span-2 grid sm:grid-cols-3 gap-5">
+					<div class="bg-white/10 rounded-xl p-5 border border-white/15">
+						<p class="text-amber-400 font-semibold">01</p>
+						<h3 class="font-bold mt-2">Brief</h3>
+						<p class="text-sm text-stone-300 mt-2">Definimos necesidades, medidas y estilo.</p>
+					</div>
+					<div class="bg-white/10 rounded-xl p-5 border border-white/15">
+						<p class="text-amber-400 font-semibold">02</p>
+						<h3 class="font-bold mt-2">Producción</h3>
+						<p class="text-sm text-stone-300 mt-2">Fabricamos con materiales y acabados seleccionados.</p>
+					</div>
+					<div class="bg-white/10 rounded-xl p-5 border border-white/15">
+						<p class="text-amber-400 font-semibold">03</p>
+						<h3 class="font-bold mt-2">Entrega</h3>
+						<p class="text-sm text-stone-300 mt-2">Instalamos y validamos cada detalle contigo.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contacto" class="py-24 bg-stone-100 px-6">
+			<div class="max-w-6xl mx-auto grid lg:grid-cols-5 gap-8 items-stretch">
+				<div class="lg:col-span-2 bg-stone-900 text-white rounded-2xl p-8">
+					<p class="text-amber-400 font-semibold mb-2">Contacto</p>
+					<h2 class="text-3xl font-bold mb-4">Cotiza tu Proyecto</h2>
+					<p class="text-stone-300 mb-8">
+						Desde un pequeño detalle hasta la cocina de tus sueños. Cuéntanos qué necesitas y te enviaremos una propuesta detallada
+					</p>
+					<div class="space-y-4 text-sm">
+						<div class="rounded-lg bg-white/10 p-4 border border-white/10">
+							<p class="text-stone-300">Tiempo de respuesta</p>
+							<p class="font-semibold mt-1">Menos de 24 horas</p>
+						</div>
+						<div class="rounded-lg bg-white/10 p-4 border border-white/10">
+							<p class="text-stone-300">Atención</p>
+							<p class="font-semibold mt-1">Lunes a Sábado</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="lg:col-span-3 bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-stone-200">
+					<form class="space-y-6">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-sm font-medium mb-2 text-stone-700">Nombre</label>
+								<input type="text" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="Tu nombre" />
+							</div>
+							<div>
+								<label class="block text-sm font-medium mb-2 text-stone-700">Email</label>
+								<input type="email" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="correo@ejemplo.com" />
+							</div>
+						</div>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-sm font-medium mb-2 text-stone-700">Teléfono</label>
+								<input type="tel" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="+503 0000-0000" />
+							</div>
+							<div>
+								<label class="block text-sm font-medium mb-2 text-stone-700">Tipo de proyecto</label>
+								<select class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none">
+									<option>Cocina</option>
+									<option>Closet</option>
+									<option>Comedor</option>
+									<option>Oficina</option>
+									<option>Otro</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label class="block text-sm font-medium mb-2 text-stone-700">¿Qué mueble necesitas?</label>
+							<textarea class="w-full p-3 border border-stone-300 rounded-lg h-32 outline-none focus:ring-2 focus:ring-amber-600" placeholder="Describe tu idea, medidas aproximadas y estilo."></textarea>
+						</div>
+						<button type="submit" class="w-full bg-stone-800 text-white py-4 rounded-lg font-bold hover:bg-stone-900 transition">
+							Enviar Mensaje
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
