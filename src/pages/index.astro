@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const proyectos = await getCollection('proyectos');
 
@@ -22,6 +23,16 @@ const services = [
 		description: 'Nos encargamos de la entrega final para que cada mueble quede perfecto en su lugar.',
 		label: 'Entrega',
 	},
+];
+
+import foto1 from '../assets/puerta02.jpeg';
+import foto2 from '../assets/escaleras.jpeg';
+import foto3 from '../assets/zapatera.jpeg';
+
+const destacados = [
+    { img: foto1, title: 'Puerta de Cedro Real', time: '3 semanas' },
+    { img: foto2, title: 'Mueble TV Premium', time: '2 semanas' },
+    { img: foto3, title: 'Dormitorio de Lujo', time: '4 semanas' }
 ];
 ---
 
@@ -73,22 +84,27 @@ const services = [
 					</div>
 				</div>
 
-				<div class="bg-white/10 border border-white/15 rounded-2xl p-6 backdrop-blur-md shadow-2xl">
-					<div class="aspect-4/5 rounded-xl bg-stone-200/15 border border-white/10 flex items-center justify-center text-stone-200">
-						Espacio para imagen principal
-					</div>
-					<div class="mt-6 grid grid-cols-2 gap-4 text-sm text-stone-200">
-						<div class="rounded-lg bg-white/10 p-4">
-							<p class="text-stone-300">Proyecto destacado</p>
-							<p class="font-semibold text-white mt-1">Cocina Integral Moderna</p>
-						</div>
-						<div class="rounded-lg bg-white/10 p-4">
-							<p class="text-stone-300">Tiempo promedio</p>
-							<p class="font-semibold text-white mt-1">2 - 4 semanas</p>
-						</div>
-					</div>
-				</div>
-			</div>
+				<div class="bg-white/10 border border-white/15 rounded-2xl p-6 backdrop-blur-md shadow-2xl overflow-hidden">
+    				<div class="relative aspect-4/5 rounded-xl bg-stone-200/15 border border-white/10 overflow-hidden">
+        					{destacados.map((proy, index) => (
+            	<div 
+            		class={`carousel-item absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}data-index={index}>
+                <Image src={proy.img} alt={proy.title} class="h-full w-full object-cover" />
+            </div>
+        ))}
+    </div>
+
+    <div class="mt-6 grid grid-cols-2 gap-4 text-sm text-stone-200">
+        <div class="rounded-lg bg-white/10 p-4">
+            <p class="text-stone-300">Proyecto destacado</p>
+            <p id="carousel-title" class="font-semibold text-white mt-1">{destacados[0].title}</p>
+        </div>
+        <div class="rounded-lg bg-white/10 p-4">
+            <p class="text-stone-300">Tiempo promedio</p>
+            <p id="carousel-time" class="font-semibold text-white mt-1">{destacados[0].time}</p>
+        </div>
+    </div>
+</div>
 		</section>
 
 		<section class="py-20 bg-white border-y border-stone-200">
@@ -218,3 +234,28 @@ const services = [
 		</section>
 	</main>
 </Layout>
+
+<script define:vars={{ destacados }}>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+    const titleEl = document.getElementById('carousel-title');
+    const timeEl = document.getElementById('carousel-time');
+
+    function showNext() {
+        //Ocultar actual
+        items[currentIndex].classList.replace('opacity-100', 'opacity-0');
+        
+        //Calcular siguiente
+        currentIndex = (currentIndex + 1) % destacados.length;
+        
+        //Mostrar siguiente
+        items[currentIndex].classList.replace('opacity-0', 'opacity-100');
+        
+        //Actualizar textos
+        if(titleEl) titleEl.textContent = destacados[currentIndex].title;
+        if(timeEl) timeEl.textContent = destacados[currentIndex].time;
+    }
+
+    //Cambiar cada 3 segundos
+    setInterval(showNext, 4000);
+</script>
