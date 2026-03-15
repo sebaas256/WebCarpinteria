@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+
+// Props
+interface Props {
+  title: string;
+  material: string;
+  imagePath: any; // imagen importada
+  alt: string;
+}
+
+const { title, material, imagePath, alt } = Astro.props;
+---
+
+<article class="group relative flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-all hover:shadow-xl">
+  <div class="aspect-4/3 overflow-hidden bg-stone-100">
+    <Image 
+      src={imagePath} 
+      alt={alt}
+      width={800}
+      height={600}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-linear-to-t from-stone-900/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <div class="mb-2 flex items-center gap-2">
+      <span class="h-1.5 w-1.5 rounded-full bg-amber-600"></span>
+      <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">Carpintería González</p>
+    </div>
+    <h3 class="text-xl font-bold text-stone-800">{title}</h3>
+    <p class="mt-2 text-sm text-stone-500">{material}</p>
+    
+  </div>
+</article>
