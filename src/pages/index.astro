@@ -74,7 +74,7 @@ const destacados = [
 							<p class="text-sm text-stone-300">Proyectos</p>
 						</div>
 						<div>
-							<p class="text-2xl font-bold text-white">12 años</p>
+							<p class="text-2xl font-bold text-white">19 años</p>
 							<p class="text-sm text-stone-300">Experiencia</p>
 						</div>
 						<div>
@@ -194,42 +194,82 @@ const destacados = [
 				</div>
 
 				<div class="lg:col-span-3 bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-stone-200">
-					<form class="space-y-6">
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div>
-								<label class="block text-sm font-medium mb-2 text-stone-700">Nombre</label>
-								<input type="text" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="Tu nombre" />
-							</div>
-							<div>
-								<label class="block text-sm font-medium mb-2 text-stone-700">Email</label>
-								<input type="email" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="correo@ejemplo.com" />
-							</div>
-						</div>
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<div>
-								<label class="block text-sm font-medium mb-2 text-stone-700">Teléfono</label>
-								<input type="tel" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none" placeholder="+503 0000-0000" />
-							</div>
-							<div>
-								<label class="block text-sm font-medium mb-2 text-stone-700">Tipo de proyecto</label>
-								<select class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none">
-									<option>Cocina</option>
-									<option>Closet</option>
-									<option>Comedor</option>
-									<option>Oficina</option>
-									<option>Otro</option>
-								</select>
-							</div>
-						</div>
-						<div>
-							<label class="block text-sm font-medium mb-2 text-stone-700">¿Qué mueble necesitas?</label>
-							<textarea class="w-full p-3 border border-stone-300 rounded-lg h-32 outline-none focus:ring-2 focus:ring-amber-600" placeholder="Describe tu idea, medidas aproximadas y estilo."></textarea>
-						</div>
-						<button type="submit" class="w-full bg-stone-800 text-white py-4 rounded-lg font-bold hover:bg-stone-900 transition">
-							Enviar Mensaje
-						</button>
-					</form>
-				</div>
+					<form 
+    					action="https://formspree.io/f/xwvrrelq" 
+    					method="POST"
+    					id="contact-form"
+    					class="space-y-6"
+						>
+    				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        			<div>
+            		<label class="block text-sm font-medium mb-2 text-stone-700">Nombre</label>
+            		<input 
+    					type="text" 
+    					name="nombre" 
+    					required 
+    					class="w-full p-3 border border-stone-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-600 
+    					group-[.was-validated]:invalid:border-red-500 
+    					group-[.was-validated]:invalid:text-red-600" 
+    					placeholder="Tu nombre" 
+					/>
+					<p class="mt-1 hidden peer-user-invalid:block text-red-500 text-xs">
+    					Por favor, ingresa un nombre valido.
+					</p>
+        		</div>
+        			<div>
+            		<label class="block text-sm font-medium mb-2 text-stone-700">Email</label>
+            		<input 
+    					type="email" 
+   					 	name="email" 
+    					required 
+    					class="peer w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 
+						group-[.was-validated]:invalid:border-red-500 
+    					group-[.was-validated]:invalid:text-red-600"  
+    					placeholder="correo@ejemplo.com" 
+					/>
+					<p class="mt-1 hidden peer-user-invalid:block text-red-500 text-xs">
+    					Por favor, ingresa un correo electrónico válido.
+					</p>
+       			</div>
+    		</div>
+    				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+       				<div>
+            			<label class="block text-sm font-medium mb-2 text-stone-700">Teléfono</label>
+            			<input 
+    						type="tel" 
+    						name="telefono" 
+    						required
+							pattern="[267]{1}[0-9]{3}-?[0-9]{4}" 
+    						class="peer w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 
+							group-[.was-validated]:invalid:border-red-500 
+    						group-[.was-validated]:invalid:text-red-600"  
+    						placeholder="7845-1234" 
+						/>
+						<p class="mt-1 hidden peer-user-invalid:block text-red-500 text-xs">
+    						Por favor, ingresa un numero valido.
+						</p>
+        		</div>
+        			<div>
+            			<label class="block text-sm font-medium mb-2 text-stone-700">Tipo de proyecto</label>
+            			<select name="tipo_proyecto" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-600 outline-none">
+                			<option value="cocina">Cocina</option>
+                			<option value="closet">Closet</option>
+                			<option value="comedor">Comedor</option>
+                			<option value="oficina">Oficina</option>
+                			<option value="otro">Otro</option>
+            	</select>
+        		</div>
+    		</div>
+    				<div>
+        			<label class="block text-sm font-medium mb-2 text-stone-700">¿Qué mueble necesitas?</label>
+        				<textarea name="mensaje" required class="w-full p-3 border border-stone-300 rounded-lg h-32 outline-none focus:ring-2 focus:ring-amber-600" placeholder="Describe tu idea, medidas aproximadas y estilo."></textarea>
+    			</div>
+    				<button type="submit" id="submit-btn" class="w-full bg-stone-800 text-white py-4 rounded-lg font-bold hover:bg-stone-900 transition">
+        			Enviar Mensaje
+    			</button>
+    				<p id="form-status" class="hidden text-center font-medium mt-4 text-green-600">¡Mensaje enviado con éxito! Nos contactaremos pronto.</p>
+				</form>				
+			</div>
 			</div>
 		</section>
 	</main>
@@ -258,4 +298,61 @@ const destacados = [
 
     //Cambiar cada 3 segundos
     setInterval(showNext, 4000);
+</script>
+
+<script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            //Validar antes de enviar
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+                form.classList.add('was-validated');
+                form.reportValidity(); //Muestra los mensajes de error del navegador
+                return;
+            }
+
+            e.preventDefault();
+            
+            //Estado de carga
+            btn.disabled = true;
+            const originalText = btn.innerText;
+            btn.innerText = 'Enviando...';
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status?.classList.remove('hidden');
+                    form.reset();
+                    form.classList.remove('was-validated'); //Limpiamos los errores visuales
+                    btn.innerText = '¡Enviado!';
+                    
+                    setTimeout(() => {
+                        status?.classList.add('hidden');
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    }, 5000);
+                } else {
+                    throw new Error();
+                }
+            } catch (error) {
+                alert('Hubo un error al enviar. Por favor intenta de nuevo.');
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
+        });
+    }
 </script>
