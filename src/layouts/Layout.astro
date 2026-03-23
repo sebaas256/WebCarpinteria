@@ -15,32 +15,64 @@ import WhatsaapBtn from '../components/WhatsaapBtn.astro';
 	</head>
 	<body class="bg-stone-50 text-stone-900 scroll-smooth">
 
-		<nav class="fixed w-full z-50 bg-stone-900/80 backdrop-blur-md border-b border-white/10">
-  			<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    			<a href="/" class="text-white font-bold text-xl">Carpintería <span class="text-amber-500">González</span></a>
+		<nav class="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
+    		<div class="max-w-6xl mx-auto">
+        		<div id="nav-container" class="flex flex-col rounded-2xl border border-white/15 bg-stone-950/70 text-white shadow-2xl backdrop-blur-xl transition-all duration-500 ease-in-out">
+            
+            		<div class="flex items-center justify-between px-5 py-3 md:py-4">
+                		<a href="#inicio" class="flex items-center gap-3 shrink-0">
+                    		<div class="h-12 w-12 md:h-14 md:w-14 rounded-xl overflow-hidden p-1.5 shadow-lg ring-1 ring-white/15 bg-white/5">
+                        		<Image 
+                            		src={logoImage} 
+                            		alt="Logo Carpintería González" 
+                            		width={120} 
+                            		height={120}
+                            		class="h-full w-full object-contain"
+                        		/>
+                    		</div>
+                    		<div class="hidden sm:block leading-tight">
+                        		<p class="text-[10px] uppercase tracking-[0.22em] text-stone-400">Carpintería</p>
+                        		<p class="text-sm md:text-base font-semibold text-white uppercase">González</p>
+                    		</div>
+                		</a>
 
-    			<div class="hidden md:flex gap-8 items-center">
-      			<a href="#inicio" class="text-stone-300 hover:text-white transition">Inicio</a>
-      			<a href="#proyectos" class="text-stone-300 hover:text-white transition">Proyectos</a>
-      			<a href="#contacto" class="bg-amber-600 px-5 py-2 rounded-lg text-white font-semibold hover:bg-amber-700 transition">Cotizar</a>
-    			</div>
+                		<div class="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 text-sm font-medium text-stone-200">
+                    		<a href="#inicio" class="rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white">Inicio</a>
+                    		<a href="#proyectos" class="rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white">Proyectos</a>
+                    		<a href="#contacto" class="rounded-full px-4 py-2 transition hover:bg-white/10 hover:text-white">Contacto</a>
+                		</div>
 
-    			<button id="menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Abrir menú">
-      			<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      			</svg>
-    			</button>
-  			</div>
+                		<div class="flex items-center gap-3">
+                    		<a href="#contacto" class="hidden md:block rounded-full bg-amber-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-500 shadow-lg">
+                        		Cotizar
+                    		</a>
 
-  			<div id="mobile-menu" class="md:hidden hidden bg-stone-900 border-t border-white/10 overflow-hidden transition-all duration-300 shadow-2xl">
-    			<div class="flex flex-col p-6 gap-6">
-      			<a href="#inicio" class="mobile-link text-lg text-stone-200 border-b border-white/5 pb-2">Inicio</a>
-      			<a href="#proyectos" class="mobile-link text-lg text-stone-200 border-b border-white/5 pb-2">Proyectos</a>
-      			<a href="#contacto" class="mobile-link bg-amber-600 text-center py-3 rounded-lg text-white font-bold">Cotizar ahora</a>
-    			</div>
-  			</div>
-			</nav>
+                    		<button id="menu-btn" class="md:hidden text-white relative h-10 w-10 focus:outline-none">
+                        		<div class="absolute inset-0 flex items-center justify-center transition-all duration-300" id="icon-burger">
+                            		<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            		</svg>
+                        		</div>
+                        		<div class="absolute inset-0 flex items-center justify-center transition-all duration-300 opacity-0 scale-50" id="icon-close">
+                            		<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            		</svg>
+                        		</div>
+                    		</button>
+                		</div>
+            		</div>
 
+            		<div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                		<div class="flex flex-col px-5 pb-6 gap-5 opacity-0 transition-opacity duration-300" id="mobile-content">
+                    		<div class="h-px w-full bg-white/10"></div> <a href="#inicio" class="mobile-link text-stone-200 font-medium">Inicio</a>
+                    		<a href="#proyectos" class="mobile-link text-stone-200 font-medium">Proyectos</a>
+                    		<a href="#contacto" class="mobile-link text-stone-200 font-medium">Contacto</a>
+                    		<a href="#contacto" class="mobile-link bg-amber-600 text-center py-4 rounded-xl text-white font-bold">Cotizar ahora</a>
+                		</div>
+            		</div>
+        		</div>
+    		</div>
+		</nav>
 		<slot />
 
 		<footer class="relative overflow-hidden bg-stone-950 text-stone-300">
@@ -132,18 +164,44 @@ import WhatsaapBtn from '../components/WhatsaapBtn.astro';
 <script>
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileContent = document.getElementById('mobile-content');
+  const burgerIcon = document.getElementById('icon-burger');
+  const closeIcon = document.getElementById('icon-close');
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
+  let isOpen = false;
+
   function toggleMenu() {
-    mobileMenu?.classList.toggle('hidden');
+    if (!mobileMenu || !mobileContent || !burgerIcon || !closeIcon) return;
+
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      // Expandir el menú
+      mobileMenu.style.maxHeight = `${mobileMenu.scrollHeight}px`;
+      mobileContent.classList.replace('opacity-0', 'opacity-100');
+      
+      // Animación de iconos
+      burgerIcon.classList.add('opacity-0', '-rotate-90', 'scale-50');
+      closeIcon.classList.replace('opacity-0', 'opacity-100');
+      closeIcon.classList.remove('scale-50');
+    } else {
+      // Contraer el menú
+      mobileMenu.style.maxHeight = '0px';
+      mobileContent.classList.replace('opacity-100', 'opacity-0');
+      
+      // Reset de iconos
+      burgerIcon.classList.remove('opacity-0', '-rotate-90', 'scale-50');
+      closeIcon.classList.replace('opacity-100', 'opacity-0');
+      closeIcon.classList.add('scale-50');
+    }
   }
 
   menuBtn?.addEventListener('click', toggleMenu);
 
-  //cerrar el menu al hacer click en un enlace
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+      if (isOpen) toggleMenu();
     });
   });
 </script>
